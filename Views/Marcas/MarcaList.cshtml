@@ -1,0 +1,35 @@
+@model List<MarcaModel>
+
+<h1>Marcas de Productos</h1>
+
+<a class = "btn btn-primary" asp-action="MarcaAdd" asp-controller="Marcas">Agregar Marca</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var m in Model)
+        {
+            <tr>
+                <td>@m.Nombre</td>
+                <td>@m.Descripcion</td>
+                <td>
+                    <a class="btn btn-secondary" 
+                    asp-action="MarcaEdit" 
+                    asp-controller="Marcas" 
+                    asp-route-id="@m.Id">Editar</a>
+
+                    <a class="btn btn-danger" 
+                    asp-action="MarcaDelete" 
+                    asp-controller="Marcas" 
+                    asp-route-id="@m.Id">Borrar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
